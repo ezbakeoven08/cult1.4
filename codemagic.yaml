@@ -1,17 +1,20 @@
 workflows:
-  android-workflow:
+  build_apk:
     name: Build IdleCult APK
-    max_build_duration: 15
+    instance_type: mac_mini
+    max_build_duration: 60
     environment:
-      flutter: stable
-      xcode: latest
+      vars:
+        PACKAGE_NAME: "com.example.idlecult"
       android_signing:
-        - keystore_reference
+        keystore_reference: idlegamecult1
     scripts:
-      - name: Get Flutter dependencies
-        script: flutter pub get
+      - name: Get dependencies
+        script: |
+          flutter pub get
       - name: Build APK
-        script: flutter build apk --release
+        script: |
+          flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
     publishing:
