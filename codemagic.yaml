@@ -8,8 +8,11 @@ workflows:
         - keystore_group
       vars:
         PACKAGE_NAME: "com.example.idlecult"
-      android_signing:
-        - keystore_reference: idlegamecult1
+    android_signing:
+      keystore: $KEYSTORE
+      keystore_password: $KEYSTORE_PASSWORD
+      key_alias: $KEY_ALIAS
+      key_password: $KEY_PASSWORD
     scripts:
       - name: Get dependencies
         script: |
