@@ -4,6 +4,8 @@ workflows:
     instance_type: mac_mini
     max_build_duration: 60
     environment:
+      groups:
+        - keystore_group
       vars:
         PACKAGE_NAME: "com.example.idlecult"
       android_signing:
