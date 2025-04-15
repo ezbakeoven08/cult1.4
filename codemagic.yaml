@@ -7,7 +7,7 @@ workflows:
       vars:
         PACKAGE_NAME: "com.example.idlecult"
       android_signing:
-        keystore_reference: idlegamecult1
+        - keystore_reference: idlegamecult1
     scripts:
       - name: Get dependencies
         script: |
@@ -17,7 +17,3 @@ workflows:
           flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
-    publishing:
-      email:
-        recipients:
-          - shewitt0404@gmail.com
