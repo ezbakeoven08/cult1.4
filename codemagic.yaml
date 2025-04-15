@@ -1,0 +1,20 @@
+workflows:
+  android-workflow:
+    name: Build IdleCult APK
+    max_build_duration: 15
+    environment:
+      flutter: stable
+      xcode: latest
+      android_signing:
+        - keystore_reference
+    scripts:
+      - name: Get Flutter dependencies
+        script: flutter pub get
+      - name: Build APK
+        script: flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - shewitt0404@gmail.com
